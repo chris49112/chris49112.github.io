@@ -30,47 +30,34 @@
 				["Campus maps", "https://microsoft.sharepoint.com/sites/msw/Maps/Pages/default.aspx"],
 			]},
 		];
-		
-		bookmarks.forEach(Initialize);
-		//Show(bookmarks[0].heading, true);
-		
-		function Initialize(bookmark)
+
+		function InitBookmark(index)
 		{
-			document.write("<div id=\"", bookmark.heading, "\"></div>");
-			Show(bookmark.heading, false);
+			var html = "<div id=\"bookmark-" + index + "\"></div>";
+			document.write(html);
 		}
 		
-		function Show(heading, open)
+		function ShowBookmark(index, open)
 		{
-			var section = document.getElementById(heading);
+			var section = document.getElementById("bookmark-" + index);
 			
-			var html = "<h2 id=\"sectionHeading\">"
-			if (open == true)
+			var html = "<h2>"
+			if (open)
 			{
-				html += "<a href=\"#\" class=\"collapsable\" onClick=\"Show(\'" + heading + "\', false)\">-</a>";
+				html += "<a href=\"#\" class=\"collapsable\" onClick=\"ShowBookmark(\'" + index + "\', false)\">-</a>";
 			}
 			else
 			{
-				html += "<a href=\"#\" class=\"collapsable\" onClick=\"Show(\'" + heading + "\', true)\">+</a>";
+				html += "<a href=\"#\" class=\"collapsable\" onClick=\"ShowBookmark(\'" + index + "\', true)\">+</a>";
 			}
-			html += "&nbsp" + heading + "</h2>";
+			html += "&nbsp" + bookmarks[index].heading + "</h2>";
 			
-			if (open == true)
+			if (open)
 			{
-				var bookmark;
-				for (i=0; i < bookmarks.length; i++)
-				{
-					if (bookmarks[i].heading == heading)
-					{
-						bookmark = bookmarks[i];
-						break;
-					}
-				}
-				
 				html += "<ul>";
-				for(i=0; i < bookmark.links.length; i++)
+				for(i=0; i < bookmarks[index].links.length; i++)
 				{
-					html += "<li><a href=\"" + bookmark.links[i][1] + "\">" + bookmark.links[i][0] + "</a></li>";
+					html += "<li><a href=\"" + bookmarks[index].links[i][1] + "\">" + bookmarks[index].links[i][0] + "</a></li>";
 				}
 				html += "</ul>";
 				html += "</div>";
@@ -81,5 +68,16 @@
 	</script>
 </head>
 <body>
+	<script type="text/javascript">
+		for(i=0; i < bookmarks.length; i++)
+		{
+			InitBookmark(i);
+			ShowBookmark(i, false);
+		}
+		if (bookmarks.length > 0)
+		{
+			ShowBookmark(0, true);
+		}
+	</script>
 </body>
 </html>
