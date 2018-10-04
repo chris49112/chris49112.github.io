@@ -11,23 +11,18 @@
 		var bookmarks = [
 			{heading: "Personal",
 			links: [
-				["Mail", "https://www.gmail.com/"],
-				["Calendar", "https://calendar.google.com/calendar/r/customweek"],
+				["Mail", "https://outlook.live.com/mail/"],
+				["Calendar", "https://outlook.live.com/calendar/"],
 				["Messenger", "https://www.messenger.com/"],
 				["Pandora", "https://www.pandora.com/"],
 				["ESAR mission line", "https://respond.kcesar.org/"],
+				["Bitlocker recovery keys", "https://onedrive.live.com/recoverykeys"],
 			]},
 			{heading: "Work",
 			links: [
 				["Mail", "https://outlook.office.com/owa/"],
 				["Teams", "https://teams.microsoft.com/"],
-				["My work items", "https://msazure.visualstudio.com/_work"],
-				["Code", "https://msazure.visualstudio.com/Intune/_versionControl"],
-				["MsftDev", "https://msftdevportal.azurewebsites.net/"],
-				["IcM", "https://aka.ms/icm"],
-				["Intune wiki", "https://intunewiki.com/wiki/Main_Page"],
-				["Product keys", "https://my.visualstudio.com/productkeys"],
-				["Campus maps", "https://microsoft.sharepoint.com/sites/msw/Maps/Pages/default.aspx"],
+				["Bookmarks", "https://intunewiki.com/wiki/User:Chblac@microsoft.com"],
 			]},
 		];
 
@@ -74,9 +69,9 @@
 			InitBookmark(i);
 			ShowBookmark(i, false);
 		}
-		if (bookmarks.length > 0)
+		for(i=0; i < bookmarks.length; i++)
 		{
-			ShowBookmark(0, true);
+			ShowBookmark(i, true);
 		}
 	</script>
 </body>
